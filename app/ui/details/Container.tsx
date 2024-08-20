@@ -1,6 +1,8 @@
 import { Movie } from "@/app/lib/definitions"
 import { url } from "@/app/lib/url"
 import List from "../List"
+import TrailerEmbed from "./TrailerEmbed"
+import { useState } from "react"
 
 type Genre = {
   id:number,
@@ -8,6 +10,12 @@ type Genre = {
 }
 
 const Container = ({movie}:{movie:any}) => {
+  const [visible, setVisible] = useState(false)
+
+  function handleClick(){
+    setVisible(!visible);
+  }
+
   return (
     <div style={{backgroundImage:`url(${url + movie.backdrop_path})`}} className="bg-no-repeat bg-contain">
         <div className="pt-40 pb-12 px-4 bg-gradient-to-t from-55% md:from-20% from-black">
@@ -26,13 +34,7 @@ const Container = ({movie}:{movie:any}) => {
           <br/>
           Rating: ⭐{movie.vote_average.toFixed(1)}</p>
         <p className="text-xs text-blue-400"><a href={movie.homepage} target="blank">visit page</a></p>
-        <button className="flex items-center gap-1 px-3 py-1 my-2 bg-white text-black text-lg font-bold rounded-sm">
-      <div className="w-0 h-0 
-border-t-[7px] border-t-transparent
-border-l-[11px] border-l-black
-border-b-[7px] border-b-transparent"/>
-        Trailer
-      </button>
+          <TrailerEmbed id={movie.id}/>
         </div>
 
         <div className="bg-black">

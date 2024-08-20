@@ -1,5 +1,5 @@
 "use server"
-import { Movie, requestOptions } from './definitions';
+import { Movie, movieVideos, requestOptions } from './definitions';
 import { hold } from './waiter';
 import fs from "fs";
 
@@ -33,4 +33,11 @@ export async function getMovieDetails(id:string){
   const res = await fetch(`https://api.themoviedb.org/3/movie/${id}`, options)
   const data = await res.json();
   return data
+}
+
+export async function getTrailer(id:string){
+  const res = await fetch(`https://api.themoviedb.org/3/movie/${id}/videos`, options)
+  const data = await res.json();
+  const trailers = data.results.filter((item:movieVideos)=>(item.type === "Trailer"))
+  return trailers[trailers.length - 1]
 }
