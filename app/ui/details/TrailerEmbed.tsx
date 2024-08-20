@@ -53,7 +53,7 @@ border-b-[7px] border-b-transparent"/>
       Trailer
     </button>
 
-    <div ref={ref} className="fixed top-0 pointer-events-none hidden">
+    <div ref={ref} className="fixed top-0 hidden">
     <button onClick={handleClick} className="w-full text-end text-shadow">X</button>
     <YouTube
         videoId={path}

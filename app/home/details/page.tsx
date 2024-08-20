@@ -12,7 +12,6 @@ const page = () => {
   useEffect(()=>{
     getMovieDetails(`${params.get("id")}`)
       .then((data)=>{
-        console.log(data);
         setMovie(data)
       })
   },[])
