@@ -41,3 +41,9 @@ export async function getTrailer(id:string){
   const trailers = data.results.filter((item:movieVideos)=>(item.type === "Trailer"))
   return trailers[trailers.length - 1]
 }
+
+export async function search(name:FormDataEntryValue){
+  const res = await fetch(`https://api.themoviedb.org/3/search/movie?query=${name}&include_adult=false&language=en-US&page=1`, options);
+  const data = await res.json();
+  return data.results
+}

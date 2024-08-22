@@ -1,8 +1,13 @@
 import List from "@/app/ui/List";
 import Header from "../ui/Header";
+import Seach from "../ui/Seach";
 
 export default function Page(){
   return <main className="h-screen">
+    <nav className="relative flex justify-between w-full">
+      <h1>MovieRecommendationSystem</h1>
+      <Seach/>
+    </nav>
    <div className="h-3/4">
       <Header/>
    </div>

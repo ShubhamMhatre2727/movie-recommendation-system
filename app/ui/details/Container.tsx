@@ -38,6 +38,10 @@ const Container = ({movie}:{movie:any}) => {
         </div>
 
         <div className="bg-black">
+        Similar
+        <List path={`/${movie.id}/similar`} wide={false}/>
+        </div>
+        <div className="bg-black">
         Recommended
         <List path={`/${movie.id}/recommendations`} wide={false}/>
         </div>
