@@ -7,19 +7,21 @@ const TrailerEmbed = (id:any) => {
   const ref:any = useRef(null);
   const [path, setPath] = useState(null);
   const opts = {
-    height: (window.innerHeight/2),
-    width: (window.innerWidth - 20),
+    width: (window.innerWidth * 0.75),
+    height: (window.innerWidth * 0.4),
     playerVars: {
       autoplay: 0,  // Autoplay the video
       mute: 0,   
-      controls:0,
-      rel:0
+      controls:1,
+      rel:0,
     },
   };
 
     useEffect(()=>{
         getTrailer(id.id).then((res)=>{
-            setPath(res.key);
+            if(res){
+              setPath(res.key);
+            }
         })
     },[])
 
@@ -53,7 +55,7 @@ border-b-[7px] border-b-transparent"/>
       Trailer
     </button>
 
-    <div ref={ref} className="fixed top-0 hidden">
+    <div ref={ref} className="fixed top-0 hidden z-50">
     <button onClick={handleClick} className="w-full text-end text-shadow">X</button>
     <YouTube
         videoId={path}
