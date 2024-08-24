@@ -26,7 +26,7 @@ const Container = ({movie}:{movie:any}) => {
         <p className="text-xs opacity-50">Genre: &nbsp;
           {
             movie.genres.map((genre:Genre,idx:number)=>(
-              <span>{idx!==0 && " | "}{genre.name}</span>
+              <span key={idx}>{idx!==0 && " | "}{genre.name}</span>
             ))
           }
         </p>
