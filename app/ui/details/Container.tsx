@@ -1,9 +1,6 @@
-"use client"
 import { url } from "@/app/lib/url"
 import List from "../List"
 import TrailerEmbed from "./TrailerEmbed"
-import { useEffect, useState } from "react"
-import { useSearchParams } from "next/navigation"
 import { getMovieDetails } from "@/app/lib/fetchData"
 
 type Genre = {
@@ -11,18 +8,8 @@ type Genre = {
   name:string
 }
 
-const Container = () => {
-
-  const searchParams = useSearchParams();
-  const params = new URLSearchParams(searchParams)
-  const [movie, setMovie]:any=useState(null);
-
-  useEffect(()=>{
-    getMovieDetails(`${params.get("id")}`)
-      .then((data)=>{
-        setMovie(data)
-      })
-  },[])
+const Container = async ({id}:{id:string}) => {
+  const movie = await getMovieDetails(id)
 
   return (
     (movie)&&

@@ -6,7 +6,7 @@ export default function Poster({ movie, wide }: { movie: Movie, wide:boolean }) 
    return (
       <a
          className={`relative snap-center ${(wide)?"min-w-60":"min-w-32"} rounded-lg sm:scroll-hidden overflow-hidden border-2`}
-         href={url + movie.backdrop_path}
+         href={"/home/details?id="+movie.id}
       >
          <Image src={`${url}${(wide)? movie.backdrop_path : movie.poster_path}`} alt={movie.title} className="hover:scale-110 transition" width={(wide)?240:128} height={75}/>
          {

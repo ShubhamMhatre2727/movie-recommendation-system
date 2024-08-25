@@ -1,3 +1,4 @@
+"use client"
 import { getTrailer } from "@/app/lib/fetchData"
 import { useEffect, useRef, useState } from "react"
 import YouTube from "react-youtube";
@@ -7,8 +8,8 @@ const TrailerEmbed = (id:any) => {
   const ref:any = useRef(null);
   const [path, setPath] = useState(null);
   const opts = {
-    width: (window.innerWidth * 0.75),
-    height: (window.innerWidth * 0.4),
+    width: 400,
+    height: 300,
     playerVars: {
       autoplay: 0,  // Autoplay the video
       mute: 0,   
