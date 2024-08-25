@@ -1,22 +1,31 @@
-import { Movie } from "@/app/lib/definitions"
+"use client"
 import { url } from "@/app/lib/url"
 import List from "../List"
 import TrailerEmbed from "./TrailerEmbed"
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import { useSearchParams } from "next/navigation"
+import { getMovieDetails } from "@/app/lib/fetchData"
 
 type Genre = {
   id:number,
   name:string
 }
 
-const Container = ({movie}:{movie:any}) => {
-  const [visible, setVisible] = useState(false)
+const Container = () => {
 
-  function handleClick(){
-    setVisible(!visible);
-  }
+  const searchParams = useSearchParams();
+  const params = new URLSearchParams(searchParams)
+  const [movie, setMovie]:any=useState(null);
+
+  useEffect(()=>{
+    getMovieDetails(`${params.get("id")}`)
+      .then((data)=>{
+        setMovie(data)
+      })
+  },[])
 
   return (
+    (movie)&&
     <div style={{backgroundImage:`url(${url + movie.backdrop_path})`}} className="bg-no-repeat bg-contain">
         <div className="pt-40 pb-12 px-4 bg-gradient-to-t from-55% md:from-20% from-black">
         <img className="w-40 mx-auto md:mx-0" src={`${url}${movie.poster_path}`} alt="" />
@@ -45,7 +54,7 @@ const Container = ({movie}:{movie:any}) => {
         Recommended
         <List path={`/${movie.id}/recommendations`} wide={false}/>
         </div>
-    </div>
+    </div>  
   )
 }
 
