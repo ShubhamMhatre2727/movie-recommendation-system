@@ -8,8 +8,8 @@ const TrailerEmbed = (id:any) => {
   const ref:any = useRef(null);
   const [path, setPath] = useState(null);
   const opts = {
-    width: 400,
-    height: 300,
+    width: 300,
+    height: 200,
     playerVars: {
       autoplay: 0,  // Autoplay the video
       mute: 0,   
