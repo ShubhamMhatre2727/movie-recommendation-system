@@ -16,7 +16,7 @@ export default function HeaderControls({item}:{item: CarouselData}){
       }
     </p>
     <div className="w-full flex justify-evenly items-end">
-      <a href="" className="flex flex-col items-center text-gray-300"><AddIcon/>My List</a>
+      <a href="" className="flex flex-col items-center text-gray-300"><AddIcon size={18}/>My List</a>
       <button className="flex items-center gap-1 px-3 py-1 bg-white text-black text-lg font-bold rounded-sm">
       <div className="w-0 h-0 
 border-t-[7px] border-t-transparent
@@ -24,7 +24,7 @@ border-l-[11px] border-l-black
 border-b-[7px] border-b-transparent"/>
         Play
       </button>
-      <a href="" className="flex flex-col items-center text-gray-300"><InfoIcon/>Info</a>
+      <a href="" className="flex flex-col items-center text-gray-300"><InfoIcon size={18}/>Info</a>
     </div>
    </div>
 }

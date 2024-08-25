@@ -1,5 +1,7 @@
 import Image from "next/image";
 import { CarouselData } from "../lib/definitions";
+import AddIcon from "./AddIcon";
+import InfoIcon from "./InfoIcon";
 
 export default function HeaderControlLarge({item}:{item:CarouselData}){
     return(
@@ -22,10 +24,10 @@ border-b-[7px] border-b-transparent"/>
           Play
         </button>
         <button className="flex items-center gap-1 px-3 py-1 text-gray-400 text-lg  rounded-sm border">
-          <Image src="/Add.svg" alt="" width={25} height={25}/> My List
+          <AddIcon size={25}/> My List
         </button>
         <button className="flex items-center gap-1 px-3 py-1 text-gray-400 text-lg  rounded-sm border">
-        <Image src="/Info.svg" alt="" width={25} height={25}/> Info
+        <InfoIcon size={25}/> Info
         </button>
         </div>
         </div>

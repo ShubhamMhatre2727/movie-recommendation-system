@@ -41,6 +41,21 @@ const TrailerEmbed = (id:any) => {
         }
       }
     }
+
+    function onPlay(){
+      if(playerRef.current){
+          const iframe = playerRef.current.getIframe();
+          if (iframe.requestFullscreen) {
+            iframe.requestFullscreen();
+          } else if (iframe.mozRequestFullScreen) { // Firefox
+            iframe.mozRequestFullScreen();
+          } else if (iframe.webkitRequestFullscreen) { // Chrome, Safari and Opera
+            iframe.webkitRequestFullscreen();
+          } else if (iframe.msRequestFullscreen) { // IE/Edge
+            iframe.msRequestFullscreen();
+          }
+      }
+    }
     
     function onEnd(){
       ref.current.style.display = "none";
@@ -63,6 +78,7 @@ border-b-[7px] border-b-transparent"/>
         opts={opts}
         onReady={onReady}
         onEnd={onEnd}
+        onPlay={onPlay}
       />
     </div>
     </div>
